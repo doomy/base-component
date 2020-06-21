@@ -1,0 +1,13 @@
+{
+    "name": "doomy/base-component",
+    "autoload": {
+      "classmap": ["src/"]
+    },
+    "require": {
+		"php": ">= 7.1",
+        "nette/application": "^3.0.2",
+        "doomy/translator": "^1.0.0",
+        "nette/utils": "^3.0.2"
+    },
+	"minimum-stability": "stable"
+}
