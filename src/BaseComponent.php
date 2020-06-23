@@ -3,10 +3,10 @@
 
 namespace Doomy;
 
-
 use Nette\Application\UI\Control;
 use Doomy\Translator\Service\Translator;
 use Nette\InvalidStateException;
+use function defined;
 
 class BaseComponent extends Control
 {
@@ -110,7 +110,12 @@ class BaseComponent extends Control
 
         $templatePath = implode("/", $pathParts) . ".latte";
 
-        return dirname(__FILE__) . '/../templates/component/' . $templatePath;
+        if (!defined('APP_DIR')) {
+            throw new \Doomy\BaseComponent\Exception\AppDirNotSetException('APP_DIR constant needs to be set');
+        }
+
+
+        return APP_DIR . '/templates/component/' . $templatePath;
     }
 
     public function setTemplatePath($templatePath)
